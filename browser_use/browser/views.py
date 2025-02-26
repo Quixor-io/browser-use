@@ -10,10 +10,10 @@ from browser_use.dom.views import DOMState, ViewportInfo
 # Pydantic
 class TabInfo(BaseModel):
 	"""Represents information about a browser tab"""
-
-	page_id: int
 	url: str
 	title: str
+	page_id: int
+	is_active: bool = False
 
 
 @dataclass
@@ -27,6 +27,7 @@ class BrowserState(DOMState):
 	browser_errors: list[str] = field(default_factory=list)
 	viewport_info: Optional[ViewportInfo] = None
 	last_interacted_element: Optional[DOMHistoryElement] = None
+	version: Optional[int] = None
 
 
 @dataclass
