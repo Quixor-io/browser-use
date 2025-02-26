@@ -4,7 +4,7 @@ from typing import Any, Optional
 from pydantic import BaseModel
 
 from browser_use.dom.history_tree_processor.service import DOMHistoryElement
-from browser_use.dom.views import DOMState
+from browser_use.dom.views import DOMState, ViewportInfo
 
 
 # Pydantic
@@ -25,6 +25,8 @@ class BrowserState(DOMState):
 	pixels_above: int = 0
 	pixels_below: int = 0
 	browser_errors: list[str] = field(default_factory=list)
+	viewport_info: Optional[ViewportInfo] = None
+	last_interacted_element: Optional[DOMHistoryElement] = None
 
 
 @dataclass
